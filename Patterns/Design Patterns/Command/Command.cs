@@ -1,3 +1,4 @@
+
 /// <summary> Base Class for implementing the Command Design Pattern </summary>
 public abstract class Command
 {
