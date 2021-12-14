@@ -12,6 +12,9 @@ public class FlyweightController : MonoBehaviour
     [Tooltip("Set to true if the Flyweight Pattern should be used")]
     public bool useFlyweight = false;
 
+    [Tooltip("Reference to the Data ScriptableObject")]
+    public Data data;
+
     // Lists of the heavyweightObjects and flyweightObjects
     List<Heavyweight> heavyweightObjects = new List<Heavyweight>();
     List<Flyweight> flyweightObjects = new List<Flyweight>();
@@ -41,9 +44,6 @@ public class FlyweightController : MonoBehaviour
     /// <param name="number">The number of objects to generate </param>
     void GenerateFlyweight(int number)
     {
-        // Generate the shared data
-        Data data = new Data();
-
         for (int i = 0; i < number; i++)
         {
             Flyweight newFlyweight = new Flyweight(data);
