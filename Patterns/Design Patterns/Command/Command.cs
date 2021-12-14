@@ -8,3 +8,4 @@ public abstract class Command
     /// <summary> Undoes this Command </summary>
     public abstract void Undo();
 }
+
