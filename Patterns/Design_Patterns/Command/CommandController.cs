@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 #endregion
 
-public class GameController : MonoBehaviour
+public class CommandController : MonoBehaviour
 {
     [Tooltip("The movable object")]
     public BasicMove moveObject;
