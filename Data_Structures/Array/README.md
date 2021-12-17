@@ -26,3 +26,17 @@ An array organizes items sequentially, one after another in memory.
 | append     |    O(1)    |
 | insert     |    O(n)    |
 | delete     |    O(n)    |
+
+## Inserting
+If we want to insert something into an array, first we have to make space by "scooting over" everything starting at the index we're inserting into:
+
+![Array Visual 2](../../assets/images/array_visual_2.svg)
+
+In the worst case we're inserting into the 0th index in the array (prepending), so we have to "scoot over" everything in the array. That's O(n) time. 
+
+## Deleting
+Array elements are stored adjacent to each other. So when we remove an element, we have to fill in the gap—"scooting over" all the elements that were after it: 
+
+![Array Visual 3](../../assets/images/array_visual_3.svg)
+
+In the worst case we're deleting the 0th item in the array, so we have to "scoot over" everything else in the array. That's O(n) time. 
