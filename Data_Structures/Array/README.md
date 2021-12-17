@@ -1,6 +1,6 @@
 # Array
 
-![Array Visual](../assets/images/array_preview.png)
+![Array Visual](../../assets/images/array_visual.svg)
 
 ## Summary :book:
 An array organizes items sequentially, one after another in memory.
@@ -19,9 +19,10 @@ An array organizes items sequentially, one after another in memory.
 > You have to "scoot over" the other elements to fill in or close gaps, which takes worst-case O(n) time. 
 
 ## Time Complexity :hourglass:
-### Worst Case
-- **space** = O(n)
-- **lookup** = O(1)
-- **append** = O(1)
-- **insert** = O(n)
-- **delete** = O(n)
+| Operation  | Worst Case |
+| ---------- | ---------- |
+| space      |    O(n)    |
+| lookup     |    O(1)    |
+| append     |    O(1)    |
+| insert     |    O(n)    |
+| delete     |    O(n)    |
