@@ -23,13 +23,17 @@
 - [Event Queue](Patterns/Decoupling_Patterns/Event_Queue)
 - [Service Locator](Patterns/Decoupling_Patterns/Service_Locator)
 > Several services are already built into Unity ( Random.Range(), Debug.Log(), Mathf.PI() )
-- Component
-> This is already built into Unity (Colliders, Mesh Renderers, etc.)
 
-## Sequencing Patterns
-- Double Buffer
-> This is already built into your computer
-- Game Loop
-> This is already built into Unity ( Time.deltaTime & Time.fixedDeltaTime )
-- Update Method
-> This is already built into Unity ( void Update() )
+## Data Structures
+- [Array](Data_Structures/Array)
+- [Dynamic Array](Data_Structures/Dynamic_Array)
+- [Linked List](Data_Structures/Linked_List)
+- [Queue](Data_Structures/Queue)
+- [Stack](Data_Structures/Stack)
+- [Hash Table](Data_Structures/Hash_Table)
+- [Tree](Data_Structures/Tree)
+- [Binary Search Tree](Data_Structures/BST)
+- [Graph](Data_Structures/Graph)
+- [Trie](Data_Structures/Trie)
+- [Heap](Data_Structures/Heap)
+- [Priority Queue](Data_Structures/Priority_Queue)
