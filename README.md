@@ -37,3 +37,14 @@
 - [Trie](Data_Structures/Trie)
 - [Heap](Data_Structures/Heap)
 - [Priority Queue](Data_Structures/Priority_Queue)
+
+## Resources
+### Documents
+- [LD - In Pursuit of Better Levels](assets/docs/LD-In_pursuit_of_better_levels.pdf) `Level Design`
+
+### Websites
+- [GameDevelop.io](https://gamedevelop.io/) `Guides / Resources`
+- [itch.io](https://itch.io/) `Game Publishing`
+- [Mixamo](https://www.mixamo.com/#/) `Characters and Animations`
+- [Piskel](https://www.piskelapp.com/) `Sprite Editor`
+- [Leetcode](https://leetcode.com/) `Coding Practice`
