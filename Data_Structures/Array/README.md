@@ -1,6 +1,6 @@
 # Array
 
-![Array Visual](../../assets/images/array_preview.svg)
+![Array Visual](../assets/images/array_preview.png)
 
 ## Summary :book:
 An array organizes items sequentially, one after another in memory.
