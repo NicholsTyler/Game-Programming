@@ -1,6 +1,6 @@
 # Queue
 
-![Queue Visual](../../assets/images/Queue_Visual.gif)
+![Queue Visual](../../assets/images/queue_visual.gif)
 
 ## Summary :book:
 A queue stores items in a first-in, first-out (FIFO) order. 
