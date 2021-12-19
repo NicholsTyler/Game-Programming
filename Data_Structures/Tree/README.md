@@ -6,6 +6,10 @@
 A tree organizes values hierarchically. 
 > Each entry in the tree is called a node, and every node links to zero or more child nodes. 
 
+## Uses :scroll:
+- Comments, replies to comments, replies to replies
+- Family trees (parents, grandparents, children, etc.)
+
 ## Leaves, Depth, and Height 
 Leaf nodes are nodes that're on the bottom of the tree (more formally: nodes that have no children). 
 > Each node in a tree has a depth: the number of links from the root to the node. 
