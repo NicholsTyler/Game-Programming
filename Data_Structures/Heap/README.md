@@ -9,6 +9,10 @@ A binary heap is a binary tree where the smallest value is always at the top.
 
 > A min-heap has the smallest value at the top. A max-heap has the largest value at the top. We'll describe min-heaps here, but the implementation for max-heaps is nearly identical. 
 
+## Uses :scroll:
+- Priority Queues are often implemented using heaps. Items are enqueued by adding them to the heap, and the highest-priority item can quickly be grabbed from the top. 
+- One way to efficiently sort a list of items is to make a heap out of them and then remove items one at a time—in sorted order. 
+
 ## Strengths :white_check_mark:
 - Quickly access the smallest item
 > Binary heaps allow you to grab the smallest item (the root) in O(1) time, while keeping other operations relatively cheap (O(lg(n)) time). 
