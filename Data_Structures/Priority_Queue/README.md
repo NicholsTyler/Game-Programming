@@ -12,6 +12,11 @@ Picture a big list of bugs for an engineering team to tackle. You want to keep t
 
 ![Priority Queue Visual 2](../../assets/images/priority_queue_visual_2.svg)
 
+## Uses :scroll:
+- Any time you want to handle things with different priority levels: triaging patients in a hospital, locating the closest available taxi, or just a to-do list. 
+- Certain foundational algorithms rely on priority queues:
+> Dijkstra's shortest-path, A* search (a graph traversal algorithm like BFS), and Huffman codes (an encoding for data compression) 
+
 ## Strengths :white_check_mark:
 - Quickly access the highest-priority item
 > Priority queues allow you to peek at the top item in O(1) while keeping other operations relatively cheap (O(lg(n)). 
