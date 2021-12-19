@@ -10,6 +10,9 @@ A stack stores items in a last-in, first-out (LIFO) order.
 
 "Last in, first out." 
 
+## Uses :scroll:
+- Depth-first search (DFS) uses a stack to keep track of which nodes to visit next
+
 ## Strengths :white_check_mark:
 - Fast Operations
 > All stack operations take O(1) time. 
