@@ -5,6 +5,10 @@
 ## Summary :book:
 A hash table organizes data so you can quickly look up values for a given key. 
 
+## Uses :scroll:
+- Constant time search, insert, and delete operations (on average)
+- Distinct elements, counting frequencies on them, finding duplicates, etc.
+
 ## Strengths :white_check_mark:
 - Fast lookups
 > Lookups take O(1) time on average. 
