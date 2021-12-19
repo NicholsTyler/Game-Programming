@@ -6,6 +6,10 @@
 An array organizes items sequentially, one after another in memory.
 > Each position in the array has an **index**, starting at 0.
 
+## Uses :scroll:
+- Arrays store data elements of the same data type
+- Used to implement other data structures like Stacks, Queues, Heaps, Hash Tables, etc.
+
 ## Strengths :white_check_mark:
 - Fast lookups
 > Retrieving the element at a given index takes O(1) time, regardless of the length of the array.
