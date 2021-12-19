@@ -10,6 +10,11 @@ A trie is a special tree that can compactly store strings.
 
 Notice that we only store "Mari" once, even though it appears in two strings: "Maria" and "Mario". 
 
+## Uses :scroll:
+- Easily print all words in alphabetical order
+- Efficiently prefix search (auto complete)
+- 
+
 ## Strengths :white_check_mark:
 - Sometimes Space-Efficient
 > If you're storing lots of words that start with similar patterns, tries may reduce the overall storage cost by storing shared prefixes once. 
