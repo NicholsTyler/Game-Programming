@@ -12,6 +12,10 @@ Checking if a binary tree is a binary search tree is a favorite question from in
 
 ![Binary Search Tree Visual 2](../../assets/images/bst_visual_2.svg)
 
+## Uses :scroll:
+- Count smaller elements on right, smallest greater element on right side
+- Doubly ended priority queue
+
 ## Strengths :white_check_mark:
 - Good performance across the board
 >  Assuming they're balanced, binary search trees are good at lots of operations, even if they're not constant time for anything. 
