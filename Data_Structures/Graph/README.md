@@ -8,6 +8,11 @@ A graph organizes items in an interconnected network.
 
 ![Graph Visual 2](../../assets/images/graph_visual_2.svg)
 
+## Uses :scroll:
+- Dijkstra's Algorithm: Find the shortest path from one node to all other nodes in a weighted graph
+- Topological Sort: Arranges the nodes in a directed, acyclic graph in a special order based on incoming edges
+- Minimum Spanning Tree: Finds the cheapest set of edges needed to reach all nodes in a weighted graph
+
 ## Strengths :white_check_mark:
 - Representing links
 > Graphs are ideal for cases where you're working with things that connect to other things. Nodes and edges could, for example, respectively represent cities and highways, routers and ethernet cables, or Facebook users and their friendships. 
