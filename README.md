@@ -39,6 +39,9 @@
 - [Priority Queue](Data_Structures/Priority_Queue)
 
 ## Resources
+### Scripts
+- [Utility Scripts](Scripts/Utility)
+
 ### Documents
 - [LD - In Pursuit of Better Levels](assets/docs/LD-In_pursuit_of_better_levels.pdf) `Level Design`
 
