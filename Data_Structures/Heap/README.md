@@ -86,9 +86,7 @@ If it's larger than either child, swap the item with the smaller of the two chil
 
 3.) Continue comparing and swapping, allowing the item to "bubble down" until it's smaller than its children. 
 
-![Heap Visual 12](../../assets/images/heap_visual_12_1.svg)
-![Heap Visual 12](../../assets/images/heap_visual_12_2.svg)
-![Heap Visual 12](../../assets/images/heap_visual_12_3.svg)
+![Heap Visual 12](../../assets/images/heap_visual_12.svg)
 
 As with inserting (above), we'll do at most lg⁡n of these swaps, giving us a total time cost of O(lg⁡n). 
 
