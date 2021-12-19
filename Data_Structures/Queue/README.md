@@ -6,6 +6,9 @@
 A queue stores items in a first-in, first-out (FIFO) order. 
 > Picture a queue like the line outside a busy restaurant. First come, first served. 
 
+## Uses :scroll:
+- Breadth-first search (BFS) uses a queue to keep track of the nodes to visit next.
+
 ## Strengths :white_check_mark:
 - Fast operations
 > All queue operations take O(1) time. 
