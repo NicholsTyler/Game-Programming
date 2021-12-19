@@ -6,6 +6,9 @@
 A dynamic array is an array with a big improvement: automatic resizing. 
 > A dynamic array expands as you add more elements. So you don't need to determine the size ahead of time. 
 
+## Uses :scroll:
+- When an array with variable size is needed
+
 ## Strengths :white_check_mark:
 - Fast lookups
 > Just like arrays, retrieving the element at a given index takes O(1) time. 
