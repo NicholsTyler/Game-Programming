@@ -54,13 +54,11 @@ As we'll see, this allows us to efficiently store our heap as a list.
 
 2.) Compare the item with its parent. If the new item is smaller, swap the two. 
 
-![Heap Visual 6](../../assets/images/heap_visual_6_1.svg)
-![Heap Visual 6](../../assets/images/heap_visual_6_2.svg)
+![Heap Visual 6](../../assets/images/heap_visual_6.svg)
 
 3.) Continue comparing and swapping, allowing the new item to "bubble up" until the it's larger than its parent. 
 
-![Heap Visual 7](../../assets/images/heap_visual_7_1.svg)
-![Heap Visual 7](../../assets/images/heap_visual_7_2.svg)
+![Heap Visual 7](../../assets/images/heap_visual_7.svg)
 
 Because our heap is built on a complete binary tree, we know it's also balanced. Which means the height of the tree is lg⁡n. So we'll do at most lg⁡n of these swaps, giving us a total time cost of O(lg⁡n). 
 
@@ -81,8 +79,7 @@ Now, we have to shuffle some things around to make this a valid heap again.
 
 If it's larger than either child, swap the item with the smaller of the two children. 
 
-![Heap Visual 11](../../assets/images/heap_visual_11_1.svg)
-![Heap Visual 11](../../assets/images/heap_visual_11_2.svg)
+![Heap Visual 11](../../assets/images/heap_visual_11.svg)
 
 3.) Continue comparing and swapping, allowing the item to "bubble down" until it's smaller than its children. 
 
@@ -132,8 +129,7 @@ Since 3 is smaller than both 7 and 9, it's already in the right spot.
 
 But, looking at the right node (2) and its children, since 1 is smaller than 2, we'll swap them. 
 
-![Heap Visual 18](../../assets/images/heap_visual_18_1.svg)
-![Heap Visual 18](../../assets/images/heap_visual_18_2.svg)
+![Heap Visual 18](../../assets/images/heap_visual_18.svg)
 
 Notice how we've got two small valid min-heaps. We're getting close! 
 
@@ -145,13 +141,11 @@ Moving up, we've got an 8 at the root.
 
 Since 8 is larger than 1, 8 bubbles down, swapping places with the smaller child: 1. 
 
-![Heap Visual 21](../../assets/images/heap_visual_21_1.svg)
-![Heap Visual 21](../../assets/images/heap_visual_21_2.svg)
+![Heap Visual 21](../../assets/images/heap_visual_21.svg)
 
 Then, we need to compare 8 to its two children—2 and 4. Since 8 is bigger than both of them, we swap with the smaller child, which is 2. 
 
-![Heap Visual 22](../../assets/images/heap_visual_22_1.svg)
-![Heap Visual 22](../../assets/images/heap_visual_22_2.svg)
+![Heap Visual 22](../../assets/images/heap_visual_22.svg)
 
 At this point, we've transformed the input tree into a valid min heap. Nice! 
 
