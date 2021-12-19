@@ -12,6 +12,9 @@ A linked list organizes items sequentially, with each item storing a pointer to 
 
 > Unlike an array, consecutive items in a linked list are not necessarily next to each other in memory. 
 
+## Uses :scroll:
+- [Stacks](https://github.com/NicholsTyler/Game-Programming/tree/main/Data_Structures/Stack) and [Queues](https://github.com/NicholsTyler/Game-Programming/tree/main/Data_Structures/Queue) only need fast operations on the ends, so linked lists are ideal.
+
 ## Strengths :white_check_mark:
 - Fast operations on the ends
 > Adding elements at either end of a linked list is O(1). Removing the first element is also O(1). 
