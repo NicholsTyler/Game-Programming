@@ -52,4 +52,4 @@
 - [Leetcode](https://leetcode.com/) `Coding Practice`
 
 ### Other
-- [Useful Script Shortcuts](assets/other/shortcuts.txt)
+- [Visual Studio Shortcuts](assets/other/vs_shortcuts.md)
