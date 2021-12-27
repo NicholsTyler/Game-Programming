@@ -50,3 +50,6 @@
 - [Mixamo](https://www.mixamo.com/#/) `Characters and Animations`
 - [Piskel](https://www.piskelapp.com/) `Sprite Editor`
 - [Leetcode](https://leetcode.com/) `Coding Practice`
+
+### Other
+- [Useful Script Shortcuts](assets/other/shortcuts.txt)
