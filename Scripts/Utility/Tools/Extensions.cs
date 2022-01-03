@@ -1,17 +1,9 @@
 #region Namespaces
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 #endregion
-namespace Utility
+namespace Utility.Tools
 {
-
-    /// <summary> Useful Global Methods </summary>
-    public static class Utility
-    {
-
-    }
-
     /// <summary> Useful Extension Methods </summary>
     public static class Extensions
     {
@@ -19,6 +11,15 @@ namespace Utility
 
         /// <returns> A random element </returns>
         public static T Rand<T>(this IList<T> list) => list[Random.Range(0, list.Count)];
+
+        /// <summary> Creates a Singleton for this script
+        /// <br>Remember to call "DontDestroyOnLoad(instance.gameObject);" if needed between scenes</br></summary>
+        /// <param name="instance"> Reference to "public static (this script) instance;" </param>
+        public static void CreateInstance<T>(this T script, ref T instance) where T : MonoBehaviour
+        {
+            if (instance == null) { instance = script; }
+            else { Debug.LogError("Multiple instances of " + instance.GetType().ToString()); }
+        }
 
         #endregion
 
@@ -34,13 +35,13 @@ namespace Utility
         }
 
         /// <returns> This GameObject's Position </returns>
-        public static Vector3 Pos(this GameObject gameObject) => gameObject.transform.position;
+        public static Vector3 pos(this GameObject gameObject) => gameObject.transform.position;
 
         /// <returns> This GameObject's Rotation </returns>
-        public static Quaternion Rot(this GameObject gameObject) => gameObject.transform.rotation;
+        public static Quaternion rot(this GameObject gameObject) => gameObject.transform.rotation;
 
         /// <returns> This GameObject's Scale </returns>
-        public static Vector3 Scale(this GameObject gameObject) => gameObject.transform.localScale;
+        public static Vector3 scale(this GameObject gameObject) => gameObject.transform.localScale;
 
         #endregion
 
@@ -81,81 +82,6 @@ namespace Utility
 
         #endregion
     }
-
-    #region Design Pattern Classes
-
-    /// <summary> Base Class for implementing the Command Design Pattern </summary>
-    public abstract class Command
-    {
-        /// <summary> Executes this Command </summary>
-        public abstract void Execute();
-
-        /// <summary> Undoes this Command </summary>
-        public abstract void Undo();
-    }
-
-    #endregion
-
-    #region Interfaces
-
-    /// <summary> This GameObject can take damage </summary>
-    public interface IDamageable<T>
-    {
-        T Health { get; set; }  // This GameObject's current health
-        void Damage(T amount);  // Deal damage to this GameObject
-    }
-
-    /// <summary> This GameObject can be healed </summary>
-    public interface IHealable<T>
-    {
-        void Heal(T amount);    // Heal this GameObject
-    }
-
-    /// <summary> This GameObject can be killed </summary>
-    public interface IKillable
-    {
-        void Kill();    // Kill this GameObject
-    }
-
-    /// <summary> This GameObject can move </summary>
-    public interface IMoveable<T>
-    {
-        T MoveSpeed { get; set; }   // This GameObject's movement speed
-        void Move(T direction);     // Move this GameObject
-    }
-
-    /// <summary> This GameObject can jump </summary>
-    public interface IJumpable<T>
-    {
-        void Jump();    // This Gameobject will jump
-    }
-
-    /// <summary> This GameObject can be picked up </summary>
-    public interface IPickupable
-    {
-        void Pickup();    // Pickup this GameObject
-    }
-
-    /// <summary> This GameObject can be saved </summary>
-    public interface IPersistable
-    {
-        void Save();    // Save this GameObject
-    }
-
-    /// <summary> This GameObject can shoot </summary>
-    public interface IShootable
-    {
-        void Fire();    // This GameObject will shoot
-    }
-
-    /// <summary> This GameObject can be driven </summary>
-    public interface IDrivable
-    {
-        void Drive();    // Drive this GameObject
-    }
-
-    #endregion
-
 }
 #region Credits
 /// Script created by Tyler Nichols
