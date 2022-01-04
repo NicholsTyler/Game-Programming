@@ -4,35 +4,10 @@ using UnityEngine.InputSystem;
 using System;
 using System.Reflection;
 using System.Collections.Generic;
+using Utility.Tools;
 #endregion
 namespace Utility.Systems
 {
-    /// <summary> Console Command Implementation </summary>
-    public class Commands
-    {
-        #region Default Commands
-        [Command("Displays available commands")]
-        public static void Help() => Console.instance.DisplayHelp();
-
-        [Command("Clears console history")]
-        public static void Clear() => Console.instance.ClearConsole();
-
-        [Command("Spams a <word> <x> times in console")]
-        public static void Spam(string word, int x)
-        {
-            for (int i = 0; i < x; i++)
-                Console.instance.AddToHistory(word);
-        }
-        #endregion
-
-        #region Other Commands
-        /* CREATE COMMANDS HERE!! */
-        #endregion
-    }
-
-    /* -------------------- IGNORE BELOW HERE -------------------- */
-
-    #region Implementation Classes
     /// <summary> Draws Debug Console & Handles Commands </summary>
     public class Console : MonoBehaviour
     {
@@ -45,7 +20,7 @@ namespace Utility.Systems
 
         // Singleton
         public static Console instance;
-        public static Commands cmdInstance;
+        public static Component cmdInstance;
 
         // Stores created commands
         Dictionary<string, (string, MethodInfo)> consoleMethods;
@@ -56,6 +31,7 @@ namespace Utility.Systems
 
         // User Input
         string input;
+        string exactInput;
         Vector2 helpScroll;
         Vector2 scroll;
         #endregion
@@ -100,6 +76,11 @@ namespace Utility.Systems
             historyInput = new List<string>();
             oldStack = new Stack<string>();
             newStack = new Stack<string>();
+
+            // Attach ConsoleCommands component to this gameobject
+            Type consoleCommands = Type.GetType("Utility.Systems.ConsoleCommands");
+            if (consoleCommands is null) { Debug.LogError("Console failed to initialize. Generate the ConsoleCommands script using the inspector"); }
+            else { gameObject.AddComponent(consoleCommands); }
         }
         void Start()
         {
@@ -269,7 +250,9 @@ namespace Utility.Systems
             historyInput.Add(input);
             scroll = new Vector2(0, historyInput.Count * lineHeight);
         }
-        public void AddToCommandHistory(string input)
+
+        /* Private Methods */
+        void AddToCommandHistory(string input)
         {
             if (curInput != null) { oldStack.Push(curInput); }
             foreach (var cmd in newStack) oldStack.Push(cmd);
@@ -277,36 +260,36 @@ namespace Utility.Systems
             oldStack.Push(input);
             curInput = null;
         }
-
-        /* Private Methods */
         void HandleInput()
         {
             // Verify input was not null or whitespace
             if (string.IsNullOrWhiteSpace(input)) { return; }
 
-            // Make the input all upper case
+            // Make the input all lower case
+            exactInput = input;
             input = input.ToLower();
 
             // Add the input to the command history
-            AddToCommandHistory(input);
+            AddToCommandHistory(exactInput);
 
             // Separate id from parameters
             string[] properties = input.Split(' ');
+            string[] exactProperties = exactInput.Split(' ');
 
             // Determine if Dictionary contains the id
             string keyInput = properties[0];
-            if (!consoleMethods.ContainsKey(keyInput)) { AddToHistory(keyInput + " is not a valid command."); return; }
+            if (!consoleMethods.ContainsKey(keyInput)) { AddToHistory(exactProperties[0] + " is not a valid command."); return; }
 
             MethodInfo mInfo = consoleMethods[keyInput].Item2;
             ParameterInfo[] parameters = mInfo.GetParameters();
 
             // Invoke method if no parameters are needed
-            if (parameters.Length == 0) { mInfo.Invoke(cmdInstance, null); AddToHistory(input); return; }
+            if (parameters.Length == 0) { mInfo.Invoke(cmdInstance, null); AddToHistory(exactInput); return; }
 
             // Check if correct number of parameters were entered
             if (properties.Length - 1 != parameters.Length)
             {
-                AddToHistory("You entered: " + input);
+                AddToHistory("You entered: " + exactInput);
                 AddToHistory(keyInput + " requires " + parameters.Length + " parameters. You entered " + (properties.Length - 1));
                 return;
             }
@@ -328,8 +311,8 @@ namespace Utility.Systems
                     else
                     {
                         isValid = false;
-                        AddToHistory("You entered: " + input);
-                        AddToHistory("Parameter #" + i + " (" + properties[i] + ") is expected to be an integer.");
+                        AddToHistory("You entered: " + exactInput);
+                        AddToHistory("Parameter #" + i + " (" + exactProperties[i] + ") is not a valid integer.");
                         break;
                     }
                 }
@@ -343,8 +326,52 @@ namespace Utility.Systems
                     else
                     {
                         isValid = false;
-                        AddToHistory("You entered: " + input);
-                        AddToHistory("Parameter #" + i + " (" + properties[i] + ") is expected to be a float.");
+                        AddToHistory("You entered: " + exactInput);
+                        AddToHistory("Parameter #" + i + " <" + exactProperties[i] + "> is not a valid integer or decimal");
+                        break;
+                    }
+                }
+
+                // If parameter is a boolean
+                else if (paramType == typeof(bool))
+                {
+                    bool isBool = bool.TryParse(properties[i], out bool output);
+
+                    if (isBool) { methodParams[i - 1] = output; }
+                    else
+                    {
+                        isValid = false;
+                        AddToHistory("You entered: " + exactInput);
+                        AddToHistory("Parameter #" + i + " <" + exactProperties[i] + "> should be true or false.");
+                        break;
+                    }
+                }
+
+                // If parameter is a GameObject
+                else if (paramType == typeof(GameObject))
+                {
+                    GameObject foundGO = GameObject.Find(exactProperties[i]);
+                    if (foundGO != null) { methodParams[i - 1] = foundGO; }
+                    else
+                    {
+                        isValid = false;
+                        AddToHistory("You entered: " + exactInput);
+                        AddToHistory("The GameObject <" + exactProperties[i] + "> was not found. Check your spelling and capitalization.");
+                        break;
+                    }
+                }
+
+                // If parameter is a color
+                else if (paramType == typeof(Color))
+                {
+                    Color newColor = properties[i].ToColor();
+
+                    if (newColor != Color.clear) { methodParams[i - 1] = newColor; }
+                    else
+                    {
+                        isValid = false;
+                        AddToHistory("You entered: " + exactInput);
+                        AddToHistory("Parameter #" + i + " <" + exactProperties[i] + "> is not a valid color.");
                         break;
                     }
                 }
@@ -353,11 +380,11 @@ namespace Utility.Systems
                 else { methodParams[i - 1] = properties[i]; }
             }
 
-            if (isValid) { AddToHistory(input); mInfo.Invoke(cmdInstance, methodParams); }
+            if (isValid) { AddToHistory(exactInput); mInfo.Invoke(cmdInstance, methodParams); }
         }
         void InitConsoleCommands()
         {
-            cmdInstance = new Commands();
+            TryGetComponent(Type.GetType("Utility.Systems.ConsoleCommands"), out cmdInstance);
             Type debugType = cmdInstance.GetType();
             foreach (MethodInfo mInfo in debugType.GetMethods())
             {
@@ -432,7 +459,6 @@ namespace Utility.Systems
         /// <param name="description"> What will this method do when called? </param>
         public CommandAttribute(string description) => _description = description;
     }
-    #endregion
 }
 
 #region Credits

@@ -21,6 +21,25 @@ namespace Utility.Tools
             else { Debug.LogError("Multiple instances of " + instance.GetType().ToString()); }
         }
 
+        /// <summary> Saves the contents of a class as a Json file </summary>
+        /// <typeparam name="T"> The Class Type </typeparam>
+        /// <param name="fileName"> The file name WITHOUT .json </param>
+        /// <param name="classInstance"> An instance of a class </param>
+        public static void SaveJson<T>(this T classInstance, string fileName) where T : MonoBehaviour
+        {
+            string text = JsonUtility.ToJson(classInstance);
+            System.IO.File.WriteAllText("Assets/Resources/Json/" + fileName + ".json", text);
+        }
+
+        /// <summary> Loads a Json file to a specified class </summary>
+        /// <typeparam name="T"> The Class Type </typeparam>
+        /// <param name="fileName"> The file name WITHOUT .json </param>
+        public static T LoadJson<T>(this string fileName) where T : MonoBehaviour
+        {
+            TextAsset textAsset = Resources.Load<TextAsset>("Json/" + fileName); 
+            return JsonUtility.FromJson<T>(textAsset.text);
+        }
+
         #endregion
 
         #region GameObject
@@ -35,13 +54,22 @@ namespace Utility.Tools
         }
 
         /// <returns> This GameObject's Position </returns>
-        public static Vector3 pos(this GameObject gameObject) => gameObject.transform.position;
+        public static Vector3 GetPos(this GameObject gameObject) => gameObject.transform.position;
+
+        /// <summary> Sets this GameObject's Position </summary>
+        public static void SetPos(this GameObject gameObject, float x = 0, float y = 0, float z = 0) => gameObject.transform.position = new Vector3(x, y, z);
 
         /// <returns> This GameObject's Rotation </returns>
-        public static Quaternion rot(this GameObject gameObject) => gameObject.transform.rotation;
+        public static Quaternion GetRot(this GameObject gameObject) => gameObject.transform.rotation;
+
+        /// <summary> Sets this GameObject's Rotation </summary>
+        public static void SetRot(this GameObject gameObject, float x = 0, float y = 0, float z = 0) => gameObject.transform.rotation = Quaternion.Euler(x, y, z);
 
         /// <returns> This GameObject's Scale </returns>
-        public static Vector3 scale(this GameObject gameObject) => gameObject.transform.localScale;
+        public static Vector3 GetScale(this GameObject gameObject) => gameObject.transform.localScale;
+
+        /// <summary> Sets this GameObject's Scale </summary>
+        public static void SetScale(this GameObject gameObject, float x = 0, float y = 0, float z = 0) => gameObject.transform.localScale = new Vector3(x, y, z);
 
         #endregion
 
@@ -78,6 +106,17 @@ namespace Utility.Tools
             var color = rend.color;
             color.a = a;
             rend.color = color;
+        }
+
+        #endregion
+
+        #region String
+
+        /// <summary> Converts a string to a color </summary>
+        public static Color ToColor(this string color)
+        {
+            bool valid = ColorUtility.TryParseHtmlString(color, out Color newColor);
+            return valid ? newColor : Color.clear;
         }
 
         #endregion

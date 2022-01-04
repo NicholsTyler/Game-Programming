@@ -12,6 +12,7 @@ namespace Utility.Tools
     /// <summary> This GameObject can be healed </summary>
     public interface IHealable<T>
     {
+        T Health { get; set; }
         void Heal(T amount);
     }
 
@@ -21,17 +22,17 @@ namespace Utility.Tools
         void Kill();
     }
 
+    /// <summary> This GameObject can enter God Mode </summary>
+    public interface IGodable
+    {
+        void God(bool active);
+    }
+
     /// <summary> This GameObject can move </summary>
     public interface IMoveable<T>
     {
         T MoveSpeed { get; set; }
         void Move();
-    }
-
-    /// <summary> This GameObject can jump </summary>
-    public interface IJumpable<T>
-    {
-        void Jump();
     }
 
     /// <summary> This GameObject can shoot </summary>
@@ -48,6 +49,12 @@ namespace Utility.Tools
     public interface IPickupable
     {
         void Pickup();
+    }
+
+    /// <summary> This GameObject can be consumed </summary>
+    public interface IConsumable
+    {
+        void Consume();
     }
 
     /// <summary> This GameObject can be saved </summary>

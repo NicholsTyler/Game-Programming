@@ -10,6 +10,8 @@ All files within this folder were created by **Tyler Nichols**
     - **Extensions.cs** [Useful extension methods]
     - **Interfaces.cs** [Commonly used interfaces]
     - **Patterns.cs** [Design patterns]
+3. Editor
+    - **ConsoleEditor.cs** [Custom Inspector for Console.cs]
 
 ### Sources
 - Inspiration for **Console.cs**: [GameDevGuide](https://www.youtube.com/c/GameDevGuide)
