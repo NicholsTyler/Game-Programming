@@ -11,3 +11,6 @@
 
 ## LD- In Pursuit of better levels
 > Link: https://docs.google.com/document/d/1fAlf2MwEFTwePwzbP3try1H0aYa9kpVBHPBkyIq-caY/edit
+
+## Scripts/Utility/Console Inspiration
+> Link: https://youtu.be/VzOEM-4A2OM
