@@ -1,9 +1,9 @@
 {
-    "name": "Utility.Systems",
-    "rootNamespace": "Utility.Systems",
+    "name": "Utility.Console",
+    "rootNamespace": "Utility.Console",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:beed55c2eb3416149982362ed15d9d61"
+        "GUID:2777a1bcb78bdd446b612646686733bc",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

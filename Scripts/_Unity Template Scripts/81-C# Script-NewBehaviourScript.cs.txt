@@ -1,0 +1,22 @@
+#region Namespaces
+    using UnityEngine;
+
+    // Needed for Coroutines, lists, queues, dictionaries, stacks, etc.
+    //using System.Collections;
+    //using System.Collections.Generic;
+#endregion
+
+#ROOTNAMESPACEBEGIN#
+    /// <summary> Summary Here </summary>
+    public class #SCRIPTNAME# : MonoBehaviour
+    {
+        #region Attributes
+        #endregion
+        #region Methods
+        #endregion
+    }
+#ROOTNAMESPACEEND#
+
+#region Credits
+    /// Script created by Tyler Nichols
+#endregion
